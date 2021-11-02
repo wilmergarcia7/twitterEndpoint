@@ -10,13 +10,10 @@ var session = require('express-session');
 var passport = require('passport');
 var TwitterStrategy = require('passport-twitter').Strategy;
 
-//El consumer key y secret solo funciona 1 vez al conectarse, para volver a usarlo hay que generar nuevos token
 passport.use(new TwitterStrategy({
-  consumerKey: "NBBAzwkDH2xm0Vsu097U9kTIk",
-  consumerSecret: "eVOifxXiHQ7qAKCq9dk3fIJX7PolNcJQajH9UoRCMucopiehQy",
-  //accessToken: "1282808399365906432-8BNkS0rBJ5kGoEAHBxqg5jSnHOqfam",
- // accessTokenSecret:"CJaW7XEhM9ZtiOJ8ztCmAKMG1hk5HjJztICQFLBwtJFJg",
-  callbackURL: "http://127.0.0.1:3000/twitter/return"
+  consumerKey: Twitter_consumer_Key,
+  consumerSecret: Twitter_consumer_Secret,
+  callbackURL: 'http://127.0.0.1:3000/twitter/return'
 },
 function(token, tokenSecret, profile, callback) {
  return callback(null, profile);

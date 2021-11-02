@@ -7,12 +7,13 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 var session = require('express-session');
 
+
 var passport = require('passport');
 var TwitterStrategy = require('passport-twitter').Strategy;
 
 passport.use(new TwitterStrategy({
-  consumerKey: Twitter_consumer_Key,
-  consumerSecret: Twitter_consumer_Secret,
+  consumerKey: TWITTER_CONSUMER_KEY,
+  consumerSecret: TWITTER_CONSUMER_SECRET,
   callbackURL: 'http://127.0.0.1:3000/twitter/return'
 },
 function(token, tokenSecret, profile, callback) {

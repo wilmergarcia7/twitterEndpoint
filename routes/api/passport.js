@@ -5,8 +5,8 @@ var conn = require('../../utils/dao');
 passport.use(new TwitterStrategy({
   consumerKey: "",
   consumerSecret: "",
-  //accessToken: "1282808399365906432-8BNkS0rBJ5kGoEAHBxqg5jSnHOqfam",
- // accessTokenSecret:"CJaW7XEhM9ZtiOJ8ztCmAKMG1hk5HjJztICQFLBwtJFJg",
+  //accessToken: "",
+ // accessTokenSecret:"",
   callbackURL: "http://127.0.0.1:3000/twitter/return"
 },
 function(token, tokenSecret, profile, callback) {

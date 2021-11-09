@@ -6,14 +6,15 @@ var bodyParser = require('body-parser');
 //var lessMiddleware = require('less-middleware');
 var logger = require('morgan');
 var session = require('express-session');
+var conn = require("./dao")
 
 
 var passport = require('passport');
 var TwitterStrategy = require('passport-twitter').Strategy;
 
 passport.use(new TwitterStrategy({
-  consumerKey: TWITTER_CONSUMER_KEY,
-  consumerSecret: TWITTER_CONSUMER_SECRET,
+  consumerKey: process.env.TWITTER_CONSUMER_KEY,
+  consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
   callbackURL: 'http://127.0.0.1:3000/twitter/return'
 },
 function(token, tokenSecret, profile, callback) {
@@ -42,7 +43,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-//app.use(lessMiddleware(path.join(__dirname, 'public')));
+app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: 'whatever', resave: true, saveUninitialized: true }));
 

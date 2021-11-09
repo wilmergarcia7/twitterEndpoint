@@ -6,15 +6,16 @@ var bodyParser = require('body-parser');
 //var lessMiddleware = require('less-middleware');
 var logger = require('morgan');
 var session = require('express-session');
-var conn = require("./dao")
+
+
 
 
 var passport = require('passport');
 var TwitterStrategy = require('passport-twitter').Strategy;
-
+require('dotenv').config();
 passport.use(new TwitterStrategy({
   consumerKey: process.env.TWITTER_CONSUMER_KEY,
-  consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
+  consumerSecret: process.env.TWITTER_CONSUMER_SECRET,  
   callbackURL: 'http://127.0.0.1:3000/twitter/return'
 },
 function(token, tokenSecret, profile, callback) {
